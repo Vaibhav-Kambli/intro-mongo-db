@@ -23,29 +23,36 @@ const student = new mongoose.Schema(
 				type: Number,
 			},
 		},
+		school: {
+			type: mongoose.Schema.Types.ObjectId,
+			required: true,
+			ref: "school",
+		},
 	},
 	{ timestamps: true }
 );
 
+const school = new mongoose.Schema({
+	name: String,
+});
+
+const School = mongoose.model("school", school);
 const Student = mongoose.model("student", student);
 
 connect()
 	.then(async (connection) => {
+		const school = await School.create({
+			name: "JK elementry school",
+		});
+
 		const student = await Student.create({
 			firstName: "John",
+			school: school._id,
 		});
 
-		const found = await Student.find({
-			firstName: "John",
-		});
+		const match = await Student.findById(student.id).populate("school").exec();
 
-		const id = await Student.findById("asdddd");
-
-		const findAndUpdate = await student.findByIdAndUpdate("asddd", {
-			firstName: "John 2",
-		});
-
-		console.log(student);
+		console.log(match);
 	})
 	.catch((err) => {
 		console.log(err);

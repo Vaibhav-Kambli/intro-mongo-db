@@ -22,7 +22,7 @@ const removeUserById = (id) => {
 };
 
 const updateUserById = (id, update) => {
-	return User.findByIdAndUpdate(id, update, { new: true });
+	return User.findByIdAndUpdate(id, update, { new: true }).exec();
 };
 
 module.exports = {

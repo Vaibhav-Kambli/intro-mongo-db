@@ -1,45 +1,54 @@
-const Post = require('./post')
+const Post = require("./post");
 
 const postByTitle = (title) => {
-  return Post.findOne({title}).exec()
-}
+	return Post.findOne({ title: title });
+};
 
 const postsForAuthor = (authorId) => {
-  return Post.find({author: authorId}).exec()
-}
+	return Post.find({
+		author: authorId,
+	});
+};
 
 const fullPostById = (id) => {
-  return Post.findById(id)
-    .populate('author')
-    .populate('similarPosts')
-    .exec()
-}
+	return Post.findById(id).populate("author").exec();
+};
 
 const allPostsSlim = (fieldsToSelect) => {
-  return Post.find({})
-    .select(fieldsToSelect)
-    .sort('-createdAt')
-    .exec()
-}
+	return Post.find({}, fieldsToSelect);
+
+	// second approach
+	// return Post.find({}).select(fieldsToSelect).exec();
+};
 
 const postByContentLength = (maxContentLength, minContentLength) => {
-  return Post.find({
-    contentLength: {$lt: maxContentLength, $gt: minContentLength}
-  })
-    .exec()
-}
+	return Post.find({
+		contentLength: {
+			$gt: minContentLength,
+			$lt: maxContentLength,
+		},
+	});
+};
 
 const addSimilarPosts = (postId, similarPosts) => {
-  return Post.findByIdAndUpdate(postId, {
-    $push: {similarPosts: {$each: similarPosts}}
-  },{new: true})
-}
+	return Post.findByIdAndUpdate(
+		postId,
+		{
+			$push: {
+				similarPosts: {
+					$each: similarPosts,
+				},
+			},
+		},
+		{ new: true }
+	).exec();
+};
 
 module.exports = {
-  postByTitle,
-  postsForAuthor,
-  fullPostById,
-  allPostsSlim,
-  postByContentLength,
-  addSimilarPosts
-}
+	postByTitle,
+	postsForAuthor,
+	fullPostById,
+	allPostsSlim,
+	postByContentLength,
+	addSimilarPosts,
+};

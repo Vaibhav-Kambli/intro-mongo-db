@@ -94,12 +94,12 @@ In this exercise, you'll learn how to use schema middleware and virtuals. Also, 
 
 In this exercise, you'll have to create queries in Expressjs controllers to satisfy the request. You'll learn how to use mongodb in an API environment. You'll also have the couse to use a hosted MongoDB.
 
-- [ ] check out to the `start` branch
-- [ ] check the README on how to run your server
-- [ ] create db query for `GET /todo/:id`
-- [ ] create db query for `GET /todo`
-- [ ] create db mutation for `POST /todo/`
-- [ ] **optional** create a mLab sandbox and use your hosted DB
+- [x] check out to the `start` branch
+- [x] check the README on how to run your server
+- [x] create db query for `GET /todo/:id`
+- [x] create db query for `GET /todo`
+- [x] create db mutation for `POST /todo/`
+- [x] **optional** create a mLab sandbox and use your hosted DB
 
 ## Debugging
 

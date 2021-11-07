@@ -77,14 +77,14 @@ This exercise will have you add relationships between models. You'll then use th
 
 In this exercise, you'll learn how to use schema middleware and virtuals. Also, you'll dig into indexes in more detail and create compound indexes.
 
-- [ ] check out to the `start` branch
-- [ ] check the README on how to run your test
-- [ ] add a compound index to the project schema so that project names are unique per org
-- [ ] add a virtual getter to the project schema called `budgetLeft` that calculates how much budget is left vs how much is spent so far
-- [ ] add a post remove hook to the org schema that removes all projects associated with the org
-- [ ] add a virtual getter to the org schema called `avatar` that creates the fill url to the org avatar by concatinating the cdnUrl with the org id
-- [ ] get all org tests to pass
-- [ ] get all project tests to pass
+- [x] check out to the `start` branch
+- [x] check the README on how to run your test
+- [x] add a compound index to the project schema so that project names are unique per org
+- [x] add a virtual getter to the project schema called `budgetLeft` that calculates how much budget is left vs how much is spent so far
+- [x] add a post remove hook to the org schema that removes all projects associated with the org
+- [x] add a virtual getter to the org schema called `avatar` that creates the fill url to the org avatar by concatinating the cdnUrl with the org id
+- [x] get all org tests to pass
+- [x] get all project tests to pass
 
 ### App
 
